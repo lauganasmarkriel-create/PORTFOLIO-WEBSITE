@@ -1,0 +1,72 @@
+/* Page Background */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+    color: #ffffff;
+}
+
+/* Shared Container Style */
+.header, .navbar, .main, .footer {
+    width: 80%;
+    margin: 20px auto;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, #1f1f1f, #2b5876);
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.header h1 {
+    margin: 0;
+    font-size: 40px;
+    letter-spacing: 2px;
+}
+
+.header p {
+    font-size: 18px;
+    color: #cccccc;
+}
+
+/* Navigation Bar */
+.navbar {
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.navbar a {
+    color: #00d4ff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    color: #ffffff;
+    border-bottom: 2px solid #00d4ff;
+}
+
+/* Main Content */
+.main {
+    background-color: #1c1c1c;
+    min-height: 300px;
+    padding: 40px;
+    line-height: 1.6;
+}
+
+/* Footer */
+.footer {
+    background-color: #111;
+    text-align: center;
+    padding: 20px;
+    font-size: 14px;
+    color: #aaaaaa;
+}

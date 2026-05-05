@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mark Riel P. Lauganas</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f5f5f5;
+      color: #222;
+      line-height: 1.7;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      background: #1a1a2e;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 2rem;
+      height: 56px;
+      z-index: 999;
+    }
+
+    .nav-logo {
+      color: #fff;
+      font-weight: bold;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: #fff; }
+
+    /* HERO */
+    #hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 5rem 2rem 3rem;
+      color: #fff;
+    }
+
+    #hero img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #e94560;
+      margin-bottom: 1.5rem;
+    }
+
+    #hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    #hero p {
+      color: #aaa;
+      font-size: 1rem;
+      margin-bottom: 0.3rem;
+    }
+
+    #hero .tagline {
+      color: #e94560;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    #hero button {
+      margin-top: 1rem;
+      padding: 0.85rem 1.4rem;
+      border: none;
+      border-radius: 999px;
+      background: #e94560;
+      color: #fff;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    #hero button:hover {
+      background: #ff2e6f;
+      transform: translateY(-2px);
+    }
+
+    /* SECTIONS */
+    section {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 5rem 2rem;
+    }
+
+    section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 3px solid #e94560;
+      display: inline-block;
+    }
+
+    /* ABOUT */
+    #about p { font-size: 1rem; color: #444; margin-bottom: 1rem; }
+
+    .about-facts {
+      margin-top: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem 2rem;
+    }
+
+    .fact { font-size: 0.95rem; }
+    .fact span { color: #888; font-size: 0.8rem; display: block; }
+
+    /* SKILLS */
+    .skill-group { margin-bottom: 1.5rem; }
+    .skill-group h3 { font-size: 1rem; margin-bottom: 0.8rem; color: #555; }
+
+    .skill-bar { margin-bottom: 0.6rem; }
+    .skill-bar label { font-size: 0.85rem; display: block; margin-bottom: 0.2rem; }
+
+    .bar-track {
+      background: #ddd;
+      border-radius: 4px;
+      height: 8px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: #e94560;
+      border-radius: 4px;
+      transition: width 1s ease;
+    }
+
+    /* ACTIVITIES / PORTFOLIO */
+    .activity-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .activity-card {
+      background: #fff;
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      text-decoration: none;
+      color: #222;
+      display: block;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border-left: 4px solid #e94560;
+    }
+
+    .activity-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    }
+
+    .activity-card .num {
+      font-size: 0.72rem;
+      color: #e94560;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+
+    .activity-card h3 { font-size: 0.95rem; margin-bottom: 0.3rem; }
+    .activity-card p { font-size: 0.82rem; color: #888; }
+
+    /* CONTACT */
+    #contact p { font-size: 0.95rem; margin-bottom: 0.6rem; }
+    #contact a { color: #e94560; text-decoration: none; }
+    #contact a:hover { text-decoration: underline; }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background: #1a1a2e;
+      color: #888;
+      font-size: 0.8rem;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .nav-links { gap: 0.8rem; }
+      .about-facts { grid-template-columns: 1fr; }
+      .nav-links a { font-size: 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Mark Riel Lauganas</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#activities">Activities</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div id="hero">
+    <div>
+      <img src="https://ui-avatars.com/api/?name=Mark+Riel+Lauganas&background=e94560&color=fff&size=200" alt="Mark Riel Lauganas" />
+      <h1>Hi, I'm Mark Riel P. Lauganas</h1>
+      <p class="tagline">IT Student &nbsp;·&nbsp; Table Tennis Enthusiast &nbsp;·&nbsp; Gamer</p>
+      <p>BS Information Technology &nbsp;|&nbsp; Cebu Institute of Technology &nbsp;|&nbsp; Cebu</p>
+      <!-- greeting button -->
+      <button id="greetButton" type="button">Say Hello</button>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I am Mark Riel P. Lauganas, a 19-year-old student from Tugas, Bolinawan, Carcar City, Cebu. I am currently pursuing my studies in Information Technology at the University of Cebu Institute of Technology.</p>
+    <p>I have a strong passion for technology and I'm always eager to learn new things in the field. In my free time, I enjoy playing table tennis, engaging in online and offline games, reading manga and manhwa, and watching anime.</p>
+    <div class="about-facts">
+      <div class="fact"><span>Age</span>19 Years Old</div>
+      <div class="fact"><span>Location</span>Carcar City, Cebu</div>
+      <div class="fact"><span>Course</span>BS Information Technology</div>
+      <div class="fact"><span>School</span>Cebu Institute of Technology</div>
+      <div class="fact"><span>Favorite Number</span>911</div>
+      <div class="fact"><span>Favorite Color</span>Blue</div>
+      <div class="fact"><span>Hobbies</span>Table Tennis, Gaming, Manga, Anime</div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <h2>My Skills</h2>
+
+    <div class="skill-group">
+      <h3>Frontend</h3>
+      <div class="skill-bar">
+        <label>HTML5</label>
+        <div class="bar-track"><div class="bar-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-bar">
+        <label>CSS3</label>
+        <div class="bar-track"><div class="bar-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-bar">
+        <label>JavaScript</label>
+        <div class="bar-track"><div class="bar-fill" style="width:60%"></div></div>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h3>Other</h3>
+      <div class="skill-bar">
+        <label>Responsive Design</label>
+        <div class="bar-track"><div class="bar-fill" style="width:70%"></div></div>
+      </div>
+      <div class="skill-bar">
+        <label>Forms & Tables</label>
+        <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVITIES -->
+  <section id="activities">
+    <h2>My Activities</h2>
+    <div class="activity-list">
+
+      <a href="act1-4/activity1.html" target="_blank" class="activity-card">
+        <p class="num">ACTIVITY 1</p>
+        <h3>Personal Bio Page</h3>
+        <p>Basic intro page with inline CSS styling</p>
+      </a>
+
+      <a href="act1-4/activity2.html" target="_blank" class="activity-card">
+        <p class="num">ACTIVITY 2</p>
+        <h3>Favorite Lists</h3>
+        <p>Ordered & unordered lists with background image</p>
+      </a>
+
+      <a href="act1-4/activity3.html" target="_blank" class="activity-card">
+        <p class="num">ACTIVITY 3</p>
+        <h3>Car Gallery Table</h3>
+        <p>Rally car image grid using HTML tables</p>
+      </a>
+
+      <a href="act1-4/activity4.html" target="_blank" class="activity-card">
+        <p class="num">ACTIVITY 4</p>
+        <h3>User Information Form</h3>
+        <p>Form with text, radio, checkbox & dropdown inputs</p>
+      </a>
+
+      <a href="act1-4/activity4v2.html" target="_blank" class="activity-card">
+        <p class="num">ACTIVITY 4V2</p>
+        <h3>User Information Form (v2)</h3>
+        <p>Alternate version of the user information form</p>
+      </a>
+
+      <a href="act5/Activity5.html" target="_blank" class="activity-card">
+        <p class="num">ACTIVITY 5</p>
+        <h3>LOS N FOUND</h3>
+        <p>Simple webpage with header, nav, and footer</p>
+      </a>
+
+      <a href="act6/Home.html" target="_blank" class="activity-card">
+        <p class="num">ACTIVITY 6</p>
+        <h3>Smash MARKet</h3>
+        <p>Multi-page table tennis racket shop website</p>
+      </a>
+
+      <a href="act7-10/activity7.html" target="_blank" class="activity-card">
+        <p class="num">ACTIVITY 7</p>
+        <h3>JavaScript Date & Time</h3>
+        <p>Button that displays the current date and time</p>
+      </a>
+
+      <a href="act7-10/activity8.html" target="_blank" class="activity-card">
+        <p class="num">ACTIVITY 8</p>
+        <h3>JavaScript Alert</h3>
+        <p>Button that triggers a custom alert box</p>
+      </a>
+
+      <a href="act7-10/activity9.html" target="_blank" class="activity-card">
+        <p class="num">ACTIVITY 9</p>
+        <h3>JavaScript Prompt</h3>
+        <p>Greets the user by name using a prompt</p>
+      </a>
+
+      <a href="act7-10/activity10.html" target="_blank" class="activity-card">
+        <p class="num">ACTIVITY 10</p>
+        <h3>Arithmetic Calculator</h3>
+        <p>Adds two numbers using JavaScript functions</p>
+      </a>
+
+      <a href="activity11/activity11.html" target="_blank" class="activity-card">
+        <p class="num">ACTIVITY 11</p>
+        <h3>Activity 11 Page</h3>
+        <p>Additional page from the activity 11 folder</p>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>📧 Email: <a href="mailto:lauganasmarkriel@gmail.com">lauganasmarkriel@gmail.com</a></p>
+    <p>📱 Phone: 09203265584</p>
+    <p>🌐 Facebook: <a href="https://web.facebook.com/markriel.lauganas.52" target="_blank">Markriel Lauganas</a></p>
+    <p>💬 Discord: simply_gab</p>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    &copy; <span id="currentYear">2026</span> Mark Riel P. Lauganas. All rights reserved.
+    <!-- auto year -->
+  </footer>
+  <!-- external JS -->
+  <script src="script.js"></script>
+</body>
+</html>
