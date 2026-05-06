@@ -19,7 +19,7 @@ document.querySelectorAll('nav a[href^="#"]').forEach(link => {
 const greetButton = document.querySelector('#greetButton');
 if (greetButton) {
   greetButton.addEventListener('click', () => {
-    const names = ['Mark', 'Friend', 'Visitor', 'Guest'];
+    const names = ['Friend', 'Visitor', 'Guest'];
     const greetings = ['Hello', 'Hi there', 'Welcome', 'Good day'];
     const greeting = greetings[Math.floor(Math.random() * greetings.length)];
     const name = names[Math.floor(Math.random() * names.length)];
