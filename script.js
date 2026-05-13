@@ -4,16 +4,6 @@ if (yearSpan) {
   yearSpan.textContent = new Date().getFullYear();
 }
 
-// Smooth scrolling for navigation links in the portfolio nav
-document.querySelectorAll('nav a[href^="#"]').forEach(link => {
-  link.addEventListener('click', event => {
-    event.preventDefault();
-    const target = document.querySelector(link.getAttribute('href'));
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
-  });
-});
 
 // Greeting button interaction in the hero section
 const greetButton = document.querySelector('#greetButton');
